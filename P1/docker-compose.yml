@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  SERVER:
+    build: SERVER/.
+    image: PythonServer
+    ports:
+      - 5000:5000
+  CLIENT:
+    build: CLIENT/.
+    image: PythonClient

@@ -1,0 +1,7 @@
+FROM debian:latest
+WORKDIR /app
+COPY . .
+RUN apt-apt install python3
+
+
+#CMD ["python3","Client.py"]
