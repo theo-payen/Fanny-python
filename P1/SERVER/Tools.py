@@ -9,15 +9,12 @@ class TOOLS():
 
 	def get_cpu(self):
 		CPU = str(psutil.cpu_percent())
-		print(CPU)
 		self.logging.info("Get CPU tools " + CPU )
 		return CPU
 
 	def get_memory(self):
-		
 		memoir = psutil.virtual_memory()
 		memoir_percent = str(memoir.percent)
-
 		self.logging.info("Get memory tools " + memoir_percent )		
 		return memoir_percent
 

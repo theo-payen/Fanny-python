@@ -59,27 +59,31 @@ while True:
 	select_menu = int(input("Select your menu:"))
 	match select_menu:
 		case 1:
-			Action = CLIENT.send("GET_CPU")
+			CLIENT.send("GET_CPU")
 		case 2:
-			Action = CLIENT.send("GET_MEMORY")
+			CLIENT.send("GET_MEMORY")
 		case 3:
-			Action = CLIENT.send("GET_PROCESS")
+			CLIENT.send("GET_PROCESS")
 			while True:
 				MESSAGE_PROCESS = CLIENT.recv().split(",")
+				print(MESSAGE_PROCESS[0])
 				if MESSAGE_PROCESS[0] == "END_PROCESS":
 					break
+				print (MESSAGE_PROCESS[0])
+				print (MESSAGE_PROCESS[1])
+				print (MESSAGE_PROCESS[2])
+				print ("________________")
 				CLIENT.send("NEXT")
+			continue
 
 		case 9:
-			Action = "EXIT"
+			CLIENT.send("EXIT")
+			break
 		case _:
 			print("Invalide")
 			continue
-
-	if Action == "EXIT":
-		break
-	del Action
-	MESSAGE_AUTHORISATION = CLIENT.recv().split(",")
-	print(MESSAGE_AUTHORISATION[0])
+	
+	MESSAGE_RETURN_PROCESS = CLIENT.recv().split(",")
+	print(MESSAGE_RETURN_PROCESS[0])
 
 CLIENT.close()

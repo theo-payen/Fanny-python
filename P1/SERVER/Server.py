@@ -69,20 +69,21 @@ class SERVER():
 			sys.exit()
 
 	def Instruction(self,client, infosClient, server):   
-		adresseIP = infosClient[0]
-		port = str(infosClient[1])
-		self.logging.info("Démarrage des threads pour le client " + adresseIP + " : " + str(port))
+		client_adresseIP = infosClient[0]
+		client_port = str(infosClient[1])
+		print_information_client = " " + client_adresseIP + " : " + client_port
 
+		self.logging.info("Démarrage des threads pour le client" + print_information_client)
 
 		MESSAGE = self.recv().split(",")
 		RECV_TOKEN = MESSAGE[0]
 
 		if (RECV_TOKEN != self.TOKEN):
-			self.send("REFUSE")
+			self.send("REFUSE" + print_information_client)
 			self.close()
 			sys.exit("REFUSE l'autentification")
 
-		print("APPROUVE")
+		self.logging.info("APPROUVE" + print_information_client)
 		self.send("APPROUVE")
 
 		while True:
@@ -94,18 +95,23 @@ class SERVER():
 				case "GET_MEMORY":
 					RETURN_ACTION = self.TOOLS.get_memory()
 				case "GET_PROCESS":
-					for process in self.TOOLS.get_process:
-						self.send(process)
+					tab_process = self.TOOLS.get_process()
+					for item in tab_process:
+						pid = str((item['pid']))
+						name = str((item['name']))
+						cpu_percent = str((item['cpu_percent']))
+
+						self.send(pid + "," + name + "," + cpu_percent)
 						self.recv().split(",")
-					RECV_ACTION = "END_PROCESS"
-					pass
+
+					RETURN_ACTION = "END_PROCESS"
+
 				case "EXIT":
-					print("Exit")
+					self.logging.info("close client" + print_information_client)
 					break
 				case _:
 					print("Error")
 					break
-			del RECV_ACTION
 			self.send(RETURN_ACTION)
 
 		self.close()
