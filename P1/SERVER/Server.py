@@ -113,17 +113,3 @@ else:
 
 
 
-#cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{print $2 + $4}')
-#mem_usage=$(free -m | awk 'NR==2{printf "%d/%dMB (%.2f%%)\n", $3,$2,$3*100/$2 }')
-"""
-import psutil
-
-cpu_percent = psutil.cpu_percent()
-print (cpu_percent)
-mem = psutil.virtual_memory()
-mem_percent = mem.percent
-
-print (mem_percent)
-
-"""
-

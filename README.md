@@ -4,6 +4,8 @@
 ## Sujet 1
 - Script basé sur Socket avec des connections Multi clients
 
+
+
 ### SERVEUR
 ### CLIENT
 
@@ -11,4 +13,5 @@
 
 
 ## Sujet 2
-#
+
+#TODO Faire le readme
