@@ -1,7 +1,7 @@
 FROM debian:latest
 WORKDIR /app
 COPY . .
-RUN apt-apt install python3 pip
+RUN apt update && apt install python3 pip -y
 
 
-#CMD ["python3","Client.py"]
+CMD ["python3","Client.py"]

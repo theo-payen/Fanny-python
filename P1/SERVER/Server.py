@@ -75,14 +75,12 @@ class SERVER():
 	def Instruction(self,client, infosClient, server):   
 		adresseIP = infosClient[0]
 		port = str(infosClient[1])
-		self.logging.info("Démarrage des threads pour le client" + adresseIP + " : " +str(port))
+		self.logging.info("Démarrage des threads pour le client " + adresseIP + " : " +str(port))
 
 		MESSAGE = self.recv().split(",")
 		self.RECV_LOGIN = MESSAGE[0]
-		self.RECV_PASSWORD = MESSAGE[1]
-
 		
-		self.send("APPROUVE" + "," + self.LOGIN + "," + self.ROLE + "," + self.NOM + "," +self.PRENOM + "," + self.SITE)
+		self.send("APPROUVE")
 		
 
 

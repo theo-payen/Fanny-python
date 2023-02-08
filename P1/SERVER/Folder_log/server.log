@@ -1,0 +1,7 @@
+('02/08/2023 17:39:30', 'INFO', 'Serveur démarré')
+('02/08/2023 17:39:36', 'INFO', 'Démarrage des threads pour le client127.0.0.1 : 64578')
+('02/08/2023 17:42:04', 'ERROR', "Impossible d'établir la connexion avec le client")
+('02/08/2023 17:42:07', 'ERROR', 'Impossible de démarrer le serveur')
+('02/08/2023 17:42:30', 'ERROR', 'Impossible de démarrer le serveur')
+('02/08/2023 17:42:43', 'INFO', 'Serveur démarré')
+('02/08/2023 17:42:46', 'INFO', 'Démarrage des threads pour le client 127.0.0.1 : 64608')

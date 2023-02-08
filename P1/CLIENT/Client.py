@@ -27,24 +27,19 @@ class CLIENT:
 	def close(self):
 		self.client.close()
 
-	def hashe_password(self,PASSWORD):
-		return str(hashlib.sha256(PASSWORD.encode()).hexdigest())
-
-	def password_check(pwd):
-		if re.match(r'[A-Za-z0-9@#$%^&+=]{8,}', pwd):
-			return True
-		else:
-			return False
-
 
 
 IP = "127.0.0.1"
-PORT = 3401
+PORT = 6000
 CLIENT = CLIENT(IP,PORT)
 
 
-
+print("toto")
 CLIENT.connection()
-CLIENT.send(LOGIN + "," + CLIENT.hashe_password(PASSWORD))
+LOGIN = "toto"
+CLIENT.send(LOGIN)
 MESSAGE_CONNECTION = CLIENT.recv().split(",")
+print(MESSAGE_CONNECTION)
+print(MESSAGE_CONNECTION[0])
+
 CLIENT.close()
