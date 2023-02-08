@@ -19,11 +19,6 @@ class SERVER():
 		# TOOLS
 		self.TOOLS = TOOLS()
 
-
-
-
-
-
 	def start(self):
 		try:
 			self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
