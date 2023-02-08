@@ -85,23 +85,22 @@ class SERVER():
 		print("APPROUVE")
 		self.send("APPROUVE")
 
-		MESSAGE = self.recv().split(",")
-		RECV_ACTION = str(MESSAGE[0])
 		while True:
+			MESSAGE = self.recv().split(",")
+			RECV_ACTION = str(MESSAGE[0])
 			match RECV_ACTION:
 				case "GET_CPU":
 					RETURN_ACTION = self.TOOLS.get_cpu()
 				case "GET_MEMORY":
 					RETURN_ACTION = self.TOOLS.get_memory()
-    
+
 				case "EXIT":
+					print("Exit")
 					break
 				case _:
 					print("Error")
 					break
 			del RECV_ACTION
-			print(type(RECV_ACTION))
-			print(str(RETURN_ACTION))
 			self.send(RETURN_ACTION)
 
 		self.close()
