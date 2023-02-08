@@ -11,6 +11,7 @@ class SERVER():
 		self.IP = IP
 		self.PORT = PORT
 
+		self.TOKEN = "uN58tUnC9iQz7Z3u8sGE4GzaqTS562"
 		self.ID_client = 0
 		self.infosocket = {"ID":[],"SOCKET":[]}
 		# FILE LOG
@@ -70,13 +71,40 @@ class SERVER():
 	def Instruction(self,client, infosClient, server):   
 		adresseIP = infosClient[0]
 		port = str(infosClient[1])
-		self.logging.info("Démarrage des threads pour le client " + adresseIP + " : " +str(port))
+		self.logging.info("Démarrage des threads pour le client " + adresseIP + " : " + str(port))
+
 
 		MESSAGE = self.recv().split(",")
-		self.RECV_LOGIN = MESSAGE[0]
-		
+		RECV_TOKEN = MESSAGE[0]
+
+		if (RECV_TOKEN != self.TOKEN):
+			self.send("REFUSE")
+			self.close()
+			sys.exit("REFUSE l'autentification")
+
+		print("APPROUVE")
 		self.send("APPROUVE")
-		
+
+		MESSAGE = self.recv().split(",")
+		RECV_ACTION = str(MESSAGE[0])
+		while True:
+			match RECV_ACTION:
+				case "GET_CPU":
+					RETURN_ACTION = self.TOOLS.get_cpu()
+				case "GET_MEMORY":
+					RETURN_ACTION = self.TOOLS.get_memory()
+    
+				case "EXIT":
+					break
+				case _:
+					print("Error")
+					break
+			del RECV_ACTION
+			print(type(RECV_ACTION))
+			print(str(RETURN_ACTION))
+			self.send(RETURN_ACTION)
+
+		self.close()
 
 
 if __name__ == '__main__':

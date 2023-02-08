@@ -4,7 +4,7 @@ class CLIENT:
 	def __init__(self, IP, PORT):
 		self.IP = IP
 		self.PORT = PORT
-		
+
 	def connection(self):
 		try:
 			self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -27,19 +27,51 @@ class CLIENT:
 	def close(self):
 		self.client.close()
 
+	def ifmessage(self,msg1,msg2):
+		if (msg1 == msg2):
+			return True
+		else:
+			return False
+
 
 
 IP = "127.0.0.1"
 PORT = 6000
 CLIENT = CLIENT(IP,PORT)
 
+TOKEN = "uN58tUnC9iQz7Z3u8sGE4GzaqTS562"
 
-print("toto")
 CLIENT.connection()
-LOGIN = "toto"
-CLIENT.send(LOGIN)
-MESSAGE_CONNECTION = CLIENT.recv().split(",")
-print(MESSAGE_CONNECTION)
-print(MESSAGE_CONNECTION[0])
+CLIENT.send(TOKEN)
+MESSAGE_AUTHORISATION = CLIENT.recv().split(",")
+
+if (MESSAGE_AUTHORISATION[0] != "APPROUVE"):
+	CLIENT.close()
+	sys.exit("refuse l'autentification")
+
+print("Autentifier")
+while True:
+	print("Tools menu")
+	print("1.get_cpu")
+	print("2.get_memory")
+	print("9.exit")
+	select_menu = int(input("Select your menu:"))
+	match select_menu:
+		case 1:
+			Action = "GET_CPU"
+		case 2:
+			Action = "GET_MEMORY"
+		case 9:
+			Action = "EXIT"
+		case _:
+			print("Invalide")
+			continue
+
+	CLIENT.send(Action)
+	if Action == "EXIT":
+		break
+	del Action
+	MESSAGE_AUTHORISATION = CLIENT.recv().split(",")
+	print(MESSAGE_AUTHORISATION[0])
 
 CLIENT.close()
