@@ -63,7 +63,13 @@ while True:
 		case 2:
 			Action = CLIENT.send("GET_MEMORY")
 		case 3:
-			Action = CLIENT.send("GET_MEMORY")
+			Action = CLIENT.send("GET_PROCESS")
+			while True:
+				MESSAGE_PROCESS = CLIENT.recv().split(",")
+				if MESSAGE_PROCESS[0] == "END_PROCESS":
+					break
+				CLIENT.send("NEXT")
+
 		case 9:
 			Action = "EXIT"
 		case _:
