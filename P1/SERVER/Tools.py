@@ -1,10 +1,10 @@
 #!/usr/bin/python
-from logging import Logging
+from logging import LOGGING
 
 class TOOLS():
 	def __init__(self) :
 		self.FILE_LOG = "Folder_log/tools.log"
-		self.logging = Logging(self.FILE_LOG)
+		self.logging = LOGGING(self.FILE_LOG)
 		pass
 
 

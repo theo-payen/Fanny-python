@@ -1,12 +1,12 @@
 #!/usr/bin/python
-from Server import Serveur
+from server import SERVER
 import threading
 
 IP = "127.0.0.1"
 PORT = 5000
 
 
-SERVER = Serveur(IP,PORT)
+SERVER = SERVER(IP,PORT)
 SERVER.start()
 
 threadsClients = []

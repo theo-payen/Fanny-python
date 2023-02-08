@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from datetime import datetime
 
-class Logging():
+class LOGGING():
 	def __init__(self,FILE_LOG):
 		self.FILE_LOG = FILE_LOG
 		self.right = "a+"

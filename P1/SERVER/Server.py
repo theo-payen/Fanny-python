@@ -1,12 +1,12 @@
 #!/usr/bin/python
 
-from Tools import TOOLS
-from Logging import Logging
+from tools import TOOLS
+from logging import LOGGING
 
 import socket, sys, os
 
 
-class Serveur():
+class SERVER():
 	def __init__(self,IP,PORT):
 		self.IP = IP
 		self.PORT = PORT
@@ -15,7 +15,7 @@ class Serveur():
 		self.infosocket = {"ID":[],"SOCKET":[]}
 		# FILE LOG
 		self.FILE_LOG = "Folder_log/server.log"
-		self.logging = Logging(self.FILE_LOG)
+		self.logging = LOGGING(self.FILE_LOG)
 		# TOOLS
 		self.TOOLS = TOOLS()
 
@@ -90,3 +90,20 @@ if __name__ == '__main__':
 	print ("Veuillez importer le script")
 else:
 	print ("Le script serveur a été importé avec succès")
+
+
+
+#cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{print $2 + $4}')
+#mem_usage=$(free -m | awk 'NR==2{printf "%d/%dMB (%.2f%%)\n", $3,$2,$3*100/$2 }')
+"""
+import psutil
+
+cpu_percent = psutil.cpu_percent()
+print (cpu_percent)
+mem = psutil.virtual_memory()
+mem_percent = mem.percent
+
+print (mem_percent)
+
+"""
+
