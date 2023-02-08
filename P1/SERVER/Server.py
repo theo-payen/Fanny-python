@@ -7,7 +7,7 @@ import socket, sys, os
 
 
 class Serveur():
-	def __init__(self,IP,PORT,DATA_BASE):
+	def __init__(self,IP,PORT):
 		self.IP = IP
 		self.PORT = PORT
 
@@ -16,9 +16,6 @@ class Serveur():
 		# FILE LOG
 		self.FILE_LOG = "Folder_log/server.log"
 		self.logging = Logging(self.FILE_LOG)
-		# BASE SQL
-		self.DATA_BASE = DATA_BASE
-		self.SQL = SQL(self.DATA_BASE)
 		# TOOLS
 		self.TOOLS = TOOLS()
 
