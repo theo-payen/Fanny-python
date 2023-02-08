@@ -54,20 +54,22 @@ while True:
 	print("Tools menu")
 	print("1.get_cpu")
 	print("2.get_memory")
+	print("3.get_process")
 	print("9.exit")
 	select_menu = int(input("Select your menu:"))
 	match select_menu:
 		case 1:
-			Action = "GET_CPU"
+			Action = CLIENT.send("GET_CPU")
 		case 2:
-			Action = "GET_MEMORY"
+			Action = CLIENT.send("GET_MEMORY")
+		case 3:
+			Action = CLIENT.send("GET_MEMORY")
 		case 9:
 			Action = "EXIT"
 		case _:
 			print("Invalide")
 			continue
 
-	CLIENT.send(Action)
 	if Action == "EXIT":
 		break
 	del Action

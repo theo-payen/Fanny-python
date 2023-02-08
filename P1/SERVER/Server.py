@@ -93,7 +93,12 @@ class SERVER():
 					RETURN_ACTION = self.TOOLS.get_cpu()
 				case "GET_MEMORY":
 					RETURN_ACTION = self.TOOLS.get_memory()
-
+				case "GET_PROCESS":
+					for process in self.TOOLS.get_process:
+						self.send(process)
+						self.recv().split(",")
+					RECV_ACTION = "END_PROCESS"
+					pass
 				case "EXIT":
 					print("Exit")
 					break
