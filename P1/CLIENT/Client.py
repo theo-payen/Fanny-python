@@ -82,7 +82,7 @@ while True:
 				print ('Pid',MESSAGE_PROCESS[0])
 				print ('Name',MESSAGE_PROCESS[1])
 				print ('CPU Percent',MESSAGE_PROCESS[2])
-				print ("________________")
+				print ("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _")
 				CLIENT.send("NEXT")
 			continue
 		case 4:
