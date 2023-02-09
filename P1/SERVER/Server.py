@@ -109,14 +109,10 @@ class SERVER():
 						self.recv().split(",")
 					RETURN_ACTION = "END_PROCESS"
 				case "GET_DISQUE_SIZE":
-					pass
+					RETURN_ACTION = self.TOOLS.get_disque_size()
+					print(RETURN_ACTION)
 				case "GET_DATE":
-					pass
-				case "CLOSE_SERVER":
-					self.close_client
-					self.close_server
-					pass
-
+					RETURN_ACTION = self.TOOLS.get_date()
 				case "EXIT":
 					self.logging.info("close client" + print_information_client)
 					break

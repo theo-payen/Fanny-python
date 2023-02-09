@@ -51,12 +51,23 @@ if (MESSAGE_AUTHORISATION[0] != "APPROUVE"):
 
 print("Autentifier")
 while True:
-	print("Tools menu")
-	print("1.get_cpu")
-	print("2.get_memory")
-	print("3.get_process")
-	print("9.exit")
-	select_menu = int(input("Select your menu:"))
+	print("")
+	print("---Tools menu---")
+	print(" ∘1.get_cpu")
+	print(" ∘2.get_memory")
+	print(" ∘3.get_process")
+	print(" ∘4.get_disk_size")
+	print(" ∘5.get_date")
+	print(" ∘9.exit")
+	print("--------------")
+	print("")
+
+
+	try:
+		select_menu = int(input("Select your option -> "))
+	except(ValueError):
+		print("invalide saisir un nombre")
+		continue
 	match select_menu:
 		case 1:
 			CLIENT.send("GET_CPU")
@@ -75,7 +86,10 @@ while True:
 				print ("________________")
 				CLIENT.send("NEXT")
 			continue
-
+		case 4:
+			CLIENT.send("GET_DISQUE_SIZE")
+		case 5:
+			CLIENT.send("GET_DATE")
 		case 9:
 			CLIENT.send("EXIT")
 			break
@@ -83,7 +97,9 @@ while True:
 			print("Invalide")
 			continue
 	
-	MESSAGE_RETURN_PROCESS = CLIENT.recv().split(",")
-	print(MESSAGE_RETURN_PROCESS[0])
+	MESSAGE_RETURN = CLIENT.recv().split(",")
+	for MESSAGE in MESSAGE_RETURN:
+		print (MESSAGE)
+	#print(MESSAGE_RETURN_PROCESS[0])
 
 CLIENT.close()
