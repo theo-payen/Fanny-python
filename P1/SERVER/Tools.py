@@ -25,6 +25,11 @@ class TOOLS():
 			tableau_process.append(proc.info)
 		return tableau_process
 
+	def get_disque_size(self):
+		pass
+
+	def get_date(self):
+		pass
 
 
 if __name__ == '__main__':

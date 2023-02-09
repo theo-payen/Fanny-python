@@ -42,8 +42,20 @@ class SERVER():
 			self.infosocket["ID"].append(self.ID_client)
 			self.infosocket["SOCKET"].append(self.client)
 
-	def closeServer(self):
-		self.server.close()
+	def close_client(self):
+		try:
+			self.client.close()
+		except:
+			self.logging.error("Impossible de fermer la connexion avec le client")
+			sys.exit()
+
+	def close_server(self):
+		try:
+			self.server.close()
+		except:
+			self.logging.error("Impossible de fermer la connexion avec le server")
+			sys.exit()
+		
 
 	def recv(self):
 		try:
@@ -51,7 +63,7 @@ class SERVER():
 			return rep.decode()
 		except:
 			self.logging.error("Impossible de recevoir le message")
-			self.close()
+			self.close_client()
 
 	def send(self,msg):
 		try:
@@ -59,14 +71,7 @@ class SERVER():
 			self.client.send(msg)
 		except : 
 			self.logging.error("Impossible d'envoyer un message")
-			self.close()
-
-	def close(self):
-		try:
-			self.client.close()
-		except:
-			self.logging.error("Impossible de fermer la connexion avec le client")
-			sys.exit()
+			self.close_client()
 
 	def Instruction(self,client, infosClient, server):   
 		client_adresseIP = infosClient[0]
@@ -80,7 +85,7 @@ class SERVER():
 
 		if (RECV_TOKEN != self.TOKEN):
 			self.send("REFUSE" + print_information_client)
-			self.close()
+			self.close_client()
 			sys.exit("REFUSE l'autentification")
 
 		self.logging.info("APPROUVE" + print_information_client)
@@ -100,11 +105,17 @@ class SERVER():
 						pid = str((item['pid']))
 						name = str((item['name']))
 						cpu_percent = str((item['cpu_percent']))
-
 						self.send(pid + "," + name + "," + cpu_percent)
 						self.recv().split(",")
-
 					RETURN_ACTION = "END_PROCESS"
+				case "GET_DISQUE_SIZE":
+					pass
+				case "GET_DATE":
+					pass
+				case "CLOSE_SERVER":
+					self.close_client
+					self.close_server
+					pass
 
 				case "EXIT":
 					self.logging.info("close client" + print_information_client)
@@ -114,7 +125,7 @@ class SERVER():
 					break
 			self.send(RETURN_ACTION)
 
-		self.close()
+		self.close_client()
 
 
 if __name__ == '__main__':
