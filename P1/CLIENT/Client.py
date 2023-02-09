@@ -52,14 +52,14 @@ if (MESSAGE_AUTHORISATION[0] != "APPROUVE"):
 print("Autentifier")
 while True:
 	print("")
-	print("---Tools menu---")
-	print(" ∘1.get_cpu")
-	print(" ∘2.get_memory")
-	print(" ∘3.get_process")
-	print(" ∘4.get_disk_size")
-	print(" ∘5.get_date")
-	print(" ∘9.exit")
-	print("--------------")
+	print("- - Toolbox  Menu - -")
+	print("1.  Get_cpu")
+	print("2.  Get_memory")
+	print("3.  Get_process")
+	print("4.  Get_disk_size")
+	print("5.  Get_date")
+	print("0.  Exit")
+	print("- - - - - - - - - - -")
 	print("")
 
 
@@ -77,12 +77,11 @@ while True:
 			CLIENT.send("GET_PROCESS")
 			while True:
 				MESSAGE_PROCESS = CLIENT.recv().split(",")
-				print(MESSAGE_PROCESS[0])
 				if MESSAGE_PROCESS[0] == "END_PROCESS":
 					break
-				print (MESSAGE_PROCESS[0])
-				print (MESSAGE_PROCESS[1])
-				print (MESSAGE_PROCESS[2])
+				print ('Pid',MESSAGE_PROCESS[0])
+				print ('Name',MESSAGE_PROCESS[1])
+				print ('CPU Percent',MESSAGE_PROCESS[2])
 				print ("________________")
 				CLIENT.send("NEXT")
 			continue
@@ -90,7 +89,7 @@ while True:
 			CLIENT.send("GET_DISQUE_SIZE")
 		case 5:
 			CLIENT.send("GET_DATE")
-		case 9:
+		case 0:
 			CLIENT.send("EXIT")
 			break
 		case _:

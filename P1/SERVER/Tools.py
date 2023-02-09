@@ -45,6 +45,6 @@ class TOOLS():
 if __name__ == '__main__':
 	print ("veillez importer le script")
 	TOOLS = TOOLS()
-	print (TOOLS.get_disque_size())
+	print (TOOLS.get_process())
 else:
 	print ("Le script tools a été importer avec succès")
