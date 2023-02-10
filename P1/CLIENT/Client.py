@@ -68,34 +68,34 @@ while True:
 	except(ValueError):
 		print("invalide saisir un nombre")
 		continue
-	match select_menu:
-		case 1:
-			CLIENT.send("GET_CPU")
-		case 2:
-			CLIENT.send("GET_MEMORY")
-		case 3:
-			CLIENT.send("GET_PROCESS")
-			while True:
-				MESSAGE_PROCESS = CLIENT.recv().split(",")
-				if MESSAGE_PROCESS[0] == "END_PROCESS":
-					break
-				print ('Pid',MESSAGE_PROCESS[0])
-				print ('Name',MESSAGE_PROCESS[1])
-				print ('CPU Percent',MESSAGE_PROCESS[2])
-				print ("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _")
-				CLIENT.send("NEXT")
-			continue
-		case 4:
-			CLIENT.send("GET_DISQUE_SIZE")
-		case 5:
-			CLIENT.send("GET_DATE")
-		case 0:
-			CLIENT.send("EXIT")
-			break
-		case _:
-			print("Invalide")
-			continue
-	
+
+	if select_menu == 1:
+		CLIENT.send("GET_CPU")
+	elif select_menu == 2:
+		CLIENT.send("GET_MEMORY")
+	elif select_menu == 3:
+		CLIENT.send("GET_PROCESS")
+		while True:
+			MESSAGE_PROCESS = CLIENT.recv().split(",")
+			if MESSAGE_PROCESS[0] == "END_PROCESS":
+				break
+			print ('Pid',MESSAGE_PROCESS[0])
+			print ('Name',MESSAGE_PROCESS[1])
+			print ('CPU Percent',MESSAGE_PROCESS[2])
+			print ("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _")
+			CLIENT.send("NEXT")
+		continue
+	elif select_menu == 4:
+		CLIENT.send("GET_DISQUE_SIZE")
+	elif select_menu == 5:
+		CLIENT.send("GET_DATE")
+	elif select_menu == 0:
+		CLIENT.send("EXIT")
+		break
+	else:
+		print("Invalide")
+		continue
+
 	MESSAGE_RETURN = CLIENT.recv().split(",")
 	for MESSAGE in MESSAGE_RETURN:
 		print (MESSAGE)
