@@ -1,4 +1,6 @@
-import socket, sys
+import socket, sys , argparse
+
+
 
 class CLIENT:
 	def __init__(self, IP, PORT):
@@ -33,10 +35,13 @@ class CLIENT:
 		else:
 			return False
 
+parser = argparse.ArgumentParser()
+parser.add_argument('-i', '--ip', help='Adresse IP du serveur' , default='127.0.0.1')
+parser.add_argument('-p', '--port', type=int, help='Numéro de port du serveur' ,  default=6000)
+args = parser.parse_args()
+IP = args.ip
+PORT = args.port
 
-
-IP = "127.0.0.1"
-PORT = 6000
 CLIENT = CLIENT(IP,PORT)
 
 TOKEN = "uN58tUnC9iQz7Z3u8sGE4GzaqTS562"

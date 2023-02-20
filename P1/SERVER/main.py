@@ -5,7 +5,6 @@ import threading
 IP = "127.0.0.1"
 PORT = 6000
 
-
 SERVER = SERVER(IP,PORT)
 SERVER.start()
 
