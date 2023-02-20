@@ -5,4 +5,8 @@ projet Fanny 4SRC Python de DEBLANGY
 #TODO Mettre en place les try
 #TODO ajouter des fonctionnalité
 #TODO network
-#TODO Stockage
+#TODO system version
+
+#FIXME multi client
+
+- pip install psutil
