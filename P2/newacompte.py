@@ -37,9 +37,6 @@ for ligne in contenu:
 
     print(username, group)
 
-
-
-    
     if not get_user(username):
         print ("existe pas on crée l'utilisateur")
         new_user(username)
@@ -49,7 +46,6 @@ for ligne in contenu:
         new_group(group)
 
     add_group(username,group)
-
 
 
 fichier.close()
