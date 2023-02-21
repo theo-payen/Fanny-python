@@ -12,7 +12,7 @@ def get_user(user):
         return False
 
 def new_user(user):
-    os.system(f"useradd {user}")
+    os.system(f"useradd -N {user}")
 
 def get_group(group):
     commande = f"grep '^{group}:' /etc/group"
@@ -34,11 +34,9 @@ for ligne in contenu:
     elements = ligne.split(":") 
     username = elements[0].strip()
     group = elements[1].strip()
-    print()
-    print()
+
     print(username, group)
-    print (get_user(username))
-    print (get_group(username))
+
 
 
     
@@ -50,28 +48,8 @@ for ligne in contenu:
         print ('existe pas en crée le groupe')
         new_group(group)
 
-    #add_group(username,group)
-    
-    
-    
-        #groupe existe pas
+    add_group(username,group)
 
 
 
 fichier.close()
-# * recupere dans le fichier Fic_Nom-Groupe le non d'utilisateur et le groupe ligne par ligne
-# * verifie si l'utilisateur existe deja dans le fichier /etc/passwd
-
-# * verifie si le groupe existe deja dans le fichier /etc/passwd
-
-#si il exite passe 
-
-#si il existe pas on crée l'utilisateur
-#os.system("useradd")
-#os.system(" groupadd")
-
-#Vérifie l’absence du user dans le fichier /etc/passwd
-
-
-#Vérifie l’absence du groupe dans le fichier /etc/group avant d’exécuter depuis Python un
-#groupadd
