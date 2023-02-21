@@ -128,6 +128,3 @@ if __name__ == '__main__':
     print ("Veuillez importer le script")
 else:
     print ("Le script serveur a été importé avec succès")
-
-
-
