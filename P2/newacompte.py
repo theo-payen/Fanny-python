@@ -1,8 +1,5 @@
 import os
 
-fichier = open('Fic_Nom-Groupe', 'r')
-contenu = fichier.readlines()
-
 def get_user(user):
     commande = f"grep '^{user}:' /etc/passwd"
     resultat = os.popen(commande).read()
@@ -28,6 +25,8 @@ def new_group(group):
 def add_group(user,group):
     os.system(f"usermod -aG {group} {user}")
 
+fichier = open('Fic_Nom-Groupe', 'r')
+contenu = fichier.readlines()
 
 
 for ligne in contenu:
