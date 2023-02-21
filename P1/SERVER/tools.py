@@ -1,5 +1,8 @@
 #!/usr/bin/python
 from logging import LOGGING
+
+# Attention, télécharger psutil avant l'exécution des tools
+# pip install psutil
 import psutil,datetime,os
 
 class TOOLS():

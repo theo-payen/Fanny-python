@@ -2,6 +2,7 @@
 from server import SERVER
 import threading
 
+# IP à modifier selon la machine hôte
 IP = "127.0.0.1"
 PORT = 6000
 
