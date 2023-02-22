@@ -1,3 +1,4 @@
+# Import de modules de la librairie Python
 import socket, sys , argparse
 
 
@@ -7,8 +8,10 @@ class CLIENT:
 		self.IP = IP
 		self.PORT = PORT
 
+	# Fonction de connexion au serveur
 	def connection(self):
 		try:
+			# Création et sauvegarde du socket de famille d'adresse AF_INET et de type SOCK_STREAM
 			self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 			self.client.connect((self.IP, self.PORT))
 		except (ConnectionRefusedError):
@@ -44,6 +47,7 @@ PORT = args.port
 
 CLIENT = CLIENT(IP,PORT)
 
+# Sauvegarde du token
 TOKEN = "uN58tUnC9iQz7Z3u8sGE4GzaqTS562"
 
 CLIENT.connection()

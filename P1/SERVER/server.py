@@ -1,29 +1,39 @@
 #!/usr/bin/python
 
+# Depuis le fichier tools.py, importer la classe TOOLS
 from tools import TOOLS
+# Depuis le fichier logging.py, importer la classe LOGGING
 from logging import LOGGING
 
+# Import de modules de la librairie Python
 import socket, sys, os
 
 
 class SERVER():
     def __init__(self,IP,PORT):
+        # Sauvegarde de l'IP défini dans la variable IP
         self.IP = IP
+        # Sauvegarde du port défini dans la variable PORT
         self.PORT = PORT
 
+        # Sauvegarde du token
         self.TOKEN = "uN58tUnC9iQz7Z3u8sGE4GzaqTS562"
         self.ID_client = 0
         self.infosocket = {"ID":[],"SOCKET":[]}
-        # FILE LOG
+        # Sauvegarde du chemin du fichier de logs
         self.FILE_LOG = "Folder_log/server.log"
         self.logging = LOGGING(self.FILE_LOG)
-        # TOOLS
+        # Sauvegarde de la classe TOOLS
         self.TOOLS = TOOLS()
 
+    # Fonction de démarrage du serveur
     def start(self):
         try:
+            # Création et sauvegarde du socket de famille d'adresse AF_INET et de type SOCK_STREAM
             self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            # Liaison du socket avec l'IP et le port
             self.server.bind((self.IP, self.PORT))
+            # Autorise le serveur à accepter jusqu'à 5 connexions
             self.server.listen(5)
         except:
             self.logging.error("Impossible de démarrer le serveur")
@@ -31,8 +41,10 @@ class SERVER():
         else:
             self.logging.info("Serveur démarré")
 
+    # Fonction d'autorisation du serveur
     def accept(self):
         try:
+            # Sauvegarde des informations du client et autorisation de la connexion par le socket
             self.client,self.infosClient = self.server.accept()
         except:
             self.logging.error("Impossible d'établir la connexion avec le client")
@@ -42,8 +54,10 @@ class SERVER():
             self.infosocket["ID"].append(self.ID_client)
             self.infosocket["SOCKET"].append(self.client)
 
+    # Fonction de fermeture de la connexion du  client
     def close_client(self):
         try:
+            # Ferme la connexion du client au socket du serveur
             self.client.close()
         except:
             self.logging.error("Impossible de fermer la connexion avec le client")
@@ -57,6 +71,7 @@ class SERVER():
             sys.exit()
         
 
+    # Permet de récupérer un message du client
     def recv(self):
         try:
             rep = self.client.recv(255)
@@ -65,6 +80,7 @@ class SERVER():
             self.logging.error("Impossible de recevoir le message")
             self.close_client()
 
+    # Permet d'envoyer un message au client
     def send(self,msg):
         try:
             msg = msg.encode()
@@ -73,6 +89,7 @@ class SERVER():
             self.logging.error("Impossible d'envoyer un message")
             self.close_client()
 
+    # Fonction contenant les instructions autorisées au client
     def Instruction(self,client, infosClient, server):   
         client_adresseIP = infosClient[0]
         client_port = str(infosClient[1])
