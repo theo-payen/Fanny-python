@@ -5,7 +5,9 @@ import socket, sys , argparse
 
 class CLIENT:
 	def __init__(self, IP, PORT):
+		# Sauvegarde de l'IP définie dans la variable IP
 		self.IP = IP
+		# Sauvegarde du port définie dans la variable PORT
 		self.PORT = PORT
 
 	# Fonction de connexion au serveur
@@ -13,6 +15,7 @@ class CLIENT:
 		try:
 			# Création et sauvegarde du socket de famille d'adresse AF_INET et de type SOCK_STREAM
 			self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			# Connexion au serveur à partir des informations d'IP et de port contenues dans la classe
 			self.client.connect((self.IP, self.PORT))
 		except (ConnectionRefusedError):
 			print ("Impossible d'établir la connexion entre le serveur et le client !")
@@ -59,6 +62,7 @@ if (MESSAGE_AUTHORISATION[0] != "APPROUVE"):
 	sys.exit("refuse l'autentification")
 
 print("Autentifier")
+# Affichage du menu de séléction de la toolbox
 while True:
 	print("")
 	print("- - Toolbox  Menu - -")
@@ -78,6 +82,7 @@ while True:
 		print("invalide saisir un nombre")
 		continue
 
+	# Envoi de mots clés par le client selon le choix de l'utilisateur
 	if select_menu == 1:
 		CLIENT.send("GET_CPU")
 	elif select_menu == 2:
