@@ -14,10 +14,10 @@ pip install psutil
 ```
 Les modules utilisés dans ce projet sont :
 
-####Récupération de la consommation CPU
-####Récupération de l'utilisation de la mémoire
-####Récupération des processus en cours d'exécution
-####Récupération de la taille du disque
-####Récupération de la date et de l'heure
-####Authentification du client en utilisant un jeton
-####Connexion multiple de clients simultanément
+- Récupération de la consommation CPU
+- Récupération de l'utilisation de la mémoire
+- Récupération des processus en cours d'exécution
+- Récupération de la taille du disque
+- Récupération de la date et de l'heure
+- Authentification du client en utilisant un jeton
+- Connexion multiple de clients simultanément
