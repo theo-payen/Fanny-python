@@ -12,7 +12,7 @@ Le module psutil doit être installé. Pour l'installer, vous pouvez utiliser la
 ```bash
 pip install psutil
 ```
-##Fonctionnalités
+## Fonctionnalités
 
 Les fonctionalités utilisés dans ce projet sont :
 
@@ -26,27 +26,45 @@ Les fonctionalités utilisés dans ce projet sont :
 
 Voici les options disponibles dans le menu 
 
-•	GET_CPU: retourne l'utilisation actuelle du CPU.
-•	GET_MEMORY: retourne l'utilisation actuelle de la mémoire.
-•	GET_PROCESS: retourne les informations sur tous les processus en cours d'exécution.
-•	GET_DISQUE_SIZE: retourne l'espace disque total et l'espace disque utilisé.
-•	GET_DATE: retourne la date et l'heure actuelles du système.
-•	EXIT: ferme la connexion avec le serveur.
+-	GET_CPU: retourne l'utilisation actuelle du CPU.
+-	GET_MEMORY: retourne l'utilisation actuelle de la mémoire.
+-	GET_PROCESS: retourne les informations sur tous les processus en cours d'exécution.
+-	GET_DISQUE_SIZE: retourne l'espace disque total et l'espace disque utilisé.
+-	GET_DATE: retourne la date et l'heure actuelles du système.
+-	EXIT: ferme la connexion avec le serveur.
 
 Le serveur enregistre également les événements suivants dans un fichier journal:
-•	INFO: événements d'information.
-•	WARNING: événements de mise en garde.
-•	ERROR: événements d'erreur.
-•	CRITICAL: événements critiques.
-•	DEBUG: événements de débogage.
+-	INFO: événements d'information.
+-	WARNING: événements de mise en garde.
+-	ERROR: événements d'erreur.
+-	CRITICAL: événements critiques.
+-	DEBUG: événements de débogage.
 
-##Fichiers
+Le fichier journal se trouve dans le répertoire Folder_log/server.log.
+
+## Fichiers
 - server.py
 Ce fichier contient la classe SERVER qui gère les sockets et les connexions clients. Il contient également des méthodes pour recevoir et envoyer des messages et pour récupérer les informations système à l'aide de la classe TOOLS.
 - login.py
 Ce fichier contient la classe LOGGING pour l'enregistrement des messages système dans un fichier journal.
 - tools.py
 Ce fichier contient la classe TOOLS pour récupérer les informations système telles que la consommation CPU, l'utilisation de la mémoire, les processus en cours d'exécution, la taille du disque et la date.
+- main.py
+Ce fichier contient le code principal pour démarrer le serveur et gérer les connexions clients.
+
+
+## Utilisation 
+
+1- Exécuter le script "main.py" pour démarrer le serveur ```python3 main.py```
+
+2- Le client Python peut être utilisé en exécutant le script client.py avec les arguments suivants :
+-	-i ou --ip : adresse IP du serveur (par défaut 127.0.0.1)
+-	-p ou --port : numéro de port du serveur (par défaut 6000)
+
+Exemple d'utilisation : ```python3 client.py -i 192.168.1.100 -p 8000```
+
+3- Modifier l'adresse IP et le port du serveur dans le fichier main.py si nécessaire.
+
 
 
 
