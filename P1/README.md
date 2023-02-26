@@ -14,7 +14,10 @@ pip install psutil
 ```
 Les modules utilisés dans ce projet sont :
 
-socket : pour la communication réseau
-threading : pour gérer les connexions avec les clients en parallèle
-datetime : pour la gestion des dates et heures
-psutil : pour la récupération des informations système (CPU, mémoire, processus, etc.)
+####Récupération de la consommation CPU
+####Récupération de l'utilisation de la mémoire
+####Récupération des processus en cours d'exécution
+####Récupération de la taille du disque
+####Récupération de la date et de l'heure
+####Authentification du client en utilisant un jeton
+####Connexion multiple de clients simultanément
