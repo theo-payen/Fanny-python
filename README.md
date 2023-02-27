@@ -125,3 +125,12 @@ Cette fonction ajoute un utilisateur à un groupe à l'aide de la commande userm
 
 
 
+## Repartition des tâches
+
+
+Projet | Sujet                     | Collaborateur 1 | Collaborateur 2
+------ | -------                   | -----           | -------
+P1     | `Tools`                   | Maxime          | Mukil 
+P1     | `Conection client serveur`| Mohamed         | Théo
+P1     | `Logs`                    | Mukil           | Maxime 
+P2     | `Script`                  | Théo            | Mohamed 
