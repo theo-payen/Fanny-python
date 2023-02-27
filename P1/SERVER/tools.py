@@ -8,7 +8,7 @@ from logging import LOGGING
 # psutil (process and system utilities) est un module de librairie Python pour récupérer des informations sur les
 # processus en cours d'exécution et l'utilisation des ressources système matérielles d'une machine
 
-import psutil,datetime,os
+import psutil,datetime,os,multiprocessing
 
 class TOOLS():
     def __init__(self) :
