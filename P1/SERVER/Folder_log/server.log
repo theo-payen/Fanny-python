@@ -204,3 +204,4 @@
 ('02/11/2023 10:43:11', 'ERROR', 'Impossible de recevoir le message')
 ('02/11/2023 10:43:20', 'INFO', 'DÃ©marrage des threads pour le client 127.0.0.1 : 53764')
 ('02/11/2023 10:43:20', 'INFO', 'APPROUVE 127.0.0.1 : 53764')
+('02/27/2023 10:53:10', 'INFO', 'Serveur démarré')
