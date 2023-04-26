@@ -1,0 +1,9 @@
+FROM python:3
+USER root
+
+RUN pip install psutil
+WORKDIR /var/app/
+COPY . .
+EXPOSE 6000
+
+CMD ["python3", "main.py"]
