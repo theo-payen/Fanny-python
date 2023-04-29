@@ -55,3 +55,6 @@
 ('02/11/2023 10:43:11', 'INFO', 'Get all process tools ')
 ('02/11/2023 10:43:22', 'INFO', 'Get memory tools 61.7')
 ('02/11/2023 10:56:09', 'INFO', 'Get disque size total,233752.4375,used,175540.9375,free,58211.5,percent_used,75.09694417625057')
+('02/27/2023 10:54:11', 'INFO', 'Get CPU tools 15.0')
+('02/27/2023 10:54:16', 'INFO', 'Get memory tools 28.1')
+('02/27/2023 10:54:18', 'INFO', 'Get all process tools ')
